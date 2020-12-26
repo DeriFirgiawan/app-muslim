@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Route} from 'react-router-dom' 
+
+// Component
+import Navbar from './Container/Navbar/Navbar'
+import HomePage from './Container/Pages/HomePage/HomePage'
+import HadithPage from './Container/Pages/HadithPage/HadithPage'
+import HadithById from './Container/Pages/HadithPage/HadithById'
+import Footer from './Components/Footer/Footer'
+// Style
+import './App.css'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Route path="/" exact component={HomePage} />
+      {/* Routing Hadith Page */}
+      <Route path="/hadith" component={HadithPage} />
+      <Route path="/hadith-detail/:id" component={HadithById} />
+      <Footer />
+    </Router>
   );
 }
 
